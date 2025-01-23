@@ -1,0 +1,629 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B9F63CA42CED9FB500ADF259 /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = B9F63CA32CED9FB500ADF259 /* Auth0 */; };
+		B9F63CAB2CEF132700ADF259 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B9F63CAA2CEF132700ADF259 /* Alamofire */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B99703A32CE2D63900DE4C7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B997038A2CE2D63800DE4C7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B99703912CE2D63800DE4C7E;
+			remoteInfo = rockapp;
+		};
+		B99703AD2CE2D63900DE4C7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B997038A2CE2D63800DE4C7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B99703912CE2D63800DE4C7E;
+			remoteInfo = rockapp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B99703922CE2D63800DE4C7E /* rockapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rockapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B99703A22CE2D63900DE4C7E /* rockappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rockappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B99703AC2CE2D63900DE4C7E /* rockappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rockappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B99AB7352D41D485007190B4 /* Exceptions for "rockapp" folder in "rockapp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B99703912CE2D63800DE4C7E /* rockapp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B99703942CE2D63800DE4C7E /* rockapp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B99AB7352D41D485007190B4 /* Exceptions for "rockapp" folder in "rockapp" target */,
+			);
+			path = rockapp;
+			sourceTree = "<group>";
+		};
+		B99703A52CE2D63900DE4C7E /* rockappTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = rockappTests;
+			sourceTree = "<group>";
+		};
+		B99703AF2CE2D63900DE4C7E /* rockappUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = rockappUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B997038F2CE2D63800DE4C7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9F63CA42CED9FB500ADF259 /* Auth0 in Frameworks */,
+				B9F63CAB2CEF132700ADF259 /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B997039F2CE2D63900DE4C7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B99703A92CE2D63900DE4C7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B99703892CE2D63800DE4C7E = {
+			isa = PBXGroup;
+			children = (
+				B99703942CE2D63800DE4C7E /* rockapp */,
+				B99703A52CE2D63900DE4C7E /* rockappTests */,
+				B99703AF2CE2D63900DE4C7E /* rockappUITests */,
+				B99703932CE2D63800DE4C7E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B99703932CE2D63800DE4C7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B99703922CE2D63800DE4C7E /* rockapp.app */,
+				B99703A22CE2D63900DE4C7E /* rockappTests.xctest */,
+				B99703AC2CE2D63900DE4C7E /* rockappUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B99703912CE2D63800DE4C7E /* rockapp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B99703B62CE2D63900DE4C7E /* Build configuration list for PBXNativeTarget "rockapp" */;
+			buildPhases = (
+				B997038E2CE2D63800DE4C7E /* Sources */,
+				B997038F2CE2D63800DE4C7E /* Frameworks */,
+				B99703902CE2D63800DE4C7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B99703942CE2D63800DE4C7E /* rockapp */,
+			);
+			name = rockapp;
+			packageProductDependencies = (
+				B9F63CA32CED9FB500ADF259 /* Auth0 */,
+				B9F63CAA2CEF132700ADF259 /* Alamofire */,
+			);
+			productName = rockapp;
+			productReference = B99703922CE2D63800DE4C7E /* rockapp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B99703A12CE2D63900DE4C7E /* rockappTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B99703B92CE2D63900DE4C7E /* Build configuration list for PBXNativeTarget "rockappTests" */;
+			buildPhases = (
+				B997039E2CE2D63900DE4C7E /* Sources */,
+				B997039F2CE2D63900DE4C7E /* Frameworks */,
+				B99703A02CE2D63900DE4C7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B99703A42CE2D63900DE4C7E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B99703A52CE2D63900DE4C7E /* rockappTests */,
+			);
+			name = rockappTests;
+			packageProductDependencies = (
+			);
+			productName = rockappTests;
+			productReference = B99703A22CE2D63900DE4C7E /* rockappTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B99703AB2CE2D63900DE4C7E /* rockappUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B99703BC2CE2D63900DE4C7E /* Build configuration list for PBXNativeTarget "rockappUITests" */;
+			buildPhases = (
+				B99703A82CE2D63900DE4C7E /* Sources */,
+				B99703A92CE2D63900DE4C7E /* Frameworks */,
+				B99703AA2CE2D63900DE4C7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B99703AE2CE2D63900DE4C7E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B99703AF2CE2D63900DE4C7E /* rockappUITests */,
+			);
+			name = rockappUITests;
+			packageProductDependencies = (
+			);
+			productName = rockappUITests;
+			productReference = B99703AC2CE2D63900DE4C7E /* rockappUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B997038A2CE2D63800DE4C7E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					B99703912CE2D63800DE4C7E = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					B99703A12CE2D63900DE4C7E = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = B99703912CE2D63800DE4C7E;
+					};
+					B99703AB2CE2D63900DE4C7E = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = B99703912CE2D63800DE4C7E;
+					};
+				};
+			};
+			buildConfigurationList = B997038D2CE2D63800DE4C7E /* Build configuration list for PBXProject "rockapp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B99703892CE2D63800DE4C7E;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B9F63CA22CED9FB500ADF259 /* XCRemoteSwiftPackageReference "Auth0" */,
+				B9F63CA92CEF132700ADF259 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B99703932CE2D63800DE4C7E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B99703912CE2D63800DE4C7E /* rockapp */,
+				B99703A12CE2D63900DE4C7E /* rockappTests */,
+				B99703AB2CE2D63900DE4C7E /* rockappUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B99703902CE2D63800DE4C7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B99703A02CE2D63900DE4C7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B99703AA2CE2D63900DE4C7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B997038E2CE2D63800DE4C7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B997039E2CE2D63900DE4C7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B99703A82CE2D63900DE4C7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B99703A42CE2D63900DE4C7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B99703912CE2D63800DE4C7E /* rockapp */;
+			targetProxy = B99703A32CE2D63900DE4C7E /* PBXContainerItemProxy */;
+		};
+		B99703AE2CE2D63900DE4C7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B99703912CE2D63800DE4C7E /* rockapp */;
+			targetProxy = B99703AD2CE2D63900DE4C7E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B99703B42CE2D63900DE4C7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B99703B52CE2D63900DE4C7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B99703B72CE2D63900DE4C7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = rockapp/rockapp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"rockapp/Preview Content\"";
+				DEVELOPMENT_TEAM = GN7VB8Z6B2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = rockapp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Rock;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ksdo.rockapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B99703B82CE2D63900DE4C7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = rockapp/rockapp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"rockapp/Preview Content\"";
+				DEVELOPMENT_TEAM = GN7VB8Z6B2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = rockapp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Rock;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ksdo.rockapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B99703BA2CE2D63900DE4C7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ksdo.rockappTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rockapp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/rockapp";
+			};
+			name = Debug;
+		};
+		B99703BB2CE2D63900DE4C7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ksdo.rockappTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rockapp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/rockapp";
+			};
+			name = Release;
+		};
+		B99703BD2CE2D63900DE4C7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ksdo.rockappUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = rockapp;
+			};
+			name = Debug;
+		};
+		B99703BE2CE2D63900DE4C7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ksdo.rockappUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = rockapp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B997038D2CE2D63800DE4C7E /* Build configuration list for PBXProject "rockapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B99703B42CE2D63900DE4C7E /* Debug */,
+				B99703B52CE2D63900DE4C7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B99703B62CE2D63900DE4C7E /* Build configuration list for PBXNativeTarget "rockapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B99703B72CE2D63900DE4C7E /* Debug */,
+				B99703B82CE2D63900DE4C7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B99703B92CE2D63900DE4C7E /* Build configuration list for PBXNativeTarget "rockappTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B99703BA2CE2D63900DE4C7E /* Debug */,
+				B99703BB2CE2D63900DE4C7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B99703BC2CE2D63900DE4C7E /* Build configuration list for PBXNativeTarget "rockappUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B99703BD2CE2D63900DE4C7E /* Debug */,
+				B99703BE2CE2D63900DE4C7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B9F63CA22CED9FB500ADF259 /* XCRemoteSwiftPackageReference "Auth0" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/Auth0.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.10.0;
+			};
+		};
+		B9F63CA92CEF132700ADF259 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B9F63CA32CED9FB500ADF259 /* Auth0 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9F63CA22CED9FB500ADF259 /* XCRemoteSwiftPackageReference "Auth0" */;
+			productName = Auth0;
+		};
+		B9F63CAA2CEF132700ADF259 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9F63CA92CEF132700ADF259 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B997038A2CE2D63800DE4C7E /* Project object */;
+}
