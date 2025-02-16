@@ -49,7 +49,7 @@ extension NewClimbView {
         ]
 
         // Replace with your API endpoint URL
-        let apiUrl = "https://yourapi.com/saveClimb"
+        let apiUrl = AppEnvironment.baseURL+"climbs"
         
         // Send the request to save the climb data
         AF.request(apiUrl, method: .post, parameters: parameters, encoding: JSONEncoding.default)

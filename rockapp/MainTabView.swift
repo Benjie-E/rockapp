@@ -20,7 +20,7 @@ struct MainTabView: View {
                     Label("Sessions", systemImage: "2.circle")
                 }
             
-            NewClimbView()
+            NewSessionView(user: user)
                 .tabItem {
                     Label("New Session", systemImage: "plus")
                 }

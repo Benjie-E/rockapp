@@ -140,6 +140,7 @@
                         }
                     case .failure(let error):
                         print("Error logging out: \(error)")
+                        
                     }
                 }
         }

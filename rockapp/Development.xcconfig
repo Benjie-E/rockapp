@@ -1,0 +1,12 @@
+//
+//  Development.xcconfig
+//  rockapp
+//
+//  Created by Benjie on 2/13/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// SERVER URL
+BASE_URL = https:/$()/0anvu7mfrf.execute-api.us-east-1.amazonaws.com/test/

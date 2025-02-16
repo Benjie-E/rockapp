@@ -1,119 +1,172 @@
-//
-//  ClimbListView.swift
-//  rockapp
-//
-//  Created by Benjie on 11/20/24.
-//
-
-
 import SwiftUI
 import Alamofire
 import Auth0
-// Climb model
-
 
 struct Climb: Codable, Identifiable {
     let id: Int
     let date: String
     let type: String
     let difficulty: String
-    //let name: String?
 }
 
 class ClimbViewModel: ObservableObject {
-    @Published var climbs: [Climb] = []  // List of climbs
+    @Published var climbs: [Climb] = []
     @Published var isLoading: Bool = false
     @Published var error: String? = nil
+    @Published var isCreating: Bool = false
 
-    // Fetch climbs using Alamofire
-    func fetchClimbs(user: User) {
-        let userStuff = UserStuff(id: user.id)
-        // Convert user data to JSON
-        guard let jsonData = try? JSONEncoder().encode(userStuff) else {
-            print("Failed to encode user data to JSON")
-            return
-        }
-        let urlString = "https://0anvu7mfrf.execute-api.us-east-1.amazonaws.com/test/climbs/"+user.id
+    func fetchClimbs(sessionId: Int) {
+        let urlString = AppEnvironment.baseURL+"climbs/"+String(sessionId)
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return
         }
-        print(url)
-        print(userStuff)
-        print(user.id)
+
         guard let accessToken: String = getSavedCredentials()?.accessToken else {
             error = "No access token"
             return
         }
-        
-        let header: HTTPHeaders = [.authorization(bearerToken: accessToken)]
-        //print(accessToken)
-        AF.request(url, method: .get)
-            .validate() // Automatically checks for 2xx status codes
+
+        let headers: HTTPHeaders = [.authorization(bearerToken: accessToken)]
+
+        isLoading = true
+
+        AF.request(url, method: .get, headers: headers)
+            .validate()
             .responseDecodable(of: ClimbData.self) { response in
+                self.isLoading = false
                 switch response.result {
                 case .success(let data):
-                    //self.climbs = data.climbs
-                    self.isLoading = false
+                    self.climbs = data.climbs
                 case .failure(let error):
-                    self.error = "Failed to fetch data: \(error.localizedDescription)"
-                    print(self.error)
-                    print(String(data: response.data!, encoding: .utf8) ?? "")
-                    self.isLoading = false
-                    self.climbs = []
+                    self.error = "Failed to fetch climbs: \(error.localizedDescription)"
+                    print(self.error ?? "")
+                }
+            }
+    }
+
+    func createClimb(sessionId: Int, routeId: Int, comment: String) {
+        let urlString = AppEnvironment.baseURL + "climbs"
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL")
+            return
+        }
+
+        guard let accessToken: String = getSavedCredentials()?.accessToken else {
+            error = "No access token"
+            return
+        }
+
+        let headers: HTTPHeaders = [
+            .authorization(bearerToken: accessToken),
+            .contentType("application/json")
+        ]
+
+        let parameters: [String: Any] = [
+            "session_id": sessionId,
+            "route_id": routeId,
+            "comment": comment
+        ]
+
+        isCreating = true
+
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .validate()
+            .response { response in
+                self.isCreating = false
+                switch response.result {
+                case .success:
+                    self.fetchClimbs(sessionId: sessionId)
+                case .failure(let error):
+                    self.error = "Failed to create climb: \(error.localizedDescription)"
+                    print(self.error ?? "")
                 }
             }
     }
 }
 
-// ClimbData struct for decoding response
 struct ClimbData: Codable {
     let climbs: [Climb]
 }
 
-
-
-
-
-// Step 3: ClimbListView that displays the list of climbs
 struct ClimbListView: View {
-    let user: User
+    let session: ClimbingSession
     @StateObject private var viewModel = ClimbViewModel()
 
+    @State private var routeId: String = ""
+    @State private var comment: String = ""
+    @State private var isAddingClimb = false
+
     var body: some View {
-        NavigationView {
-            VStack {
-                if viewModel.isLoading {
-                    ProgressView("Loading Climbs...")
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .padding()
-                } else if let error = viewModel.error {
-                    Text("Error: \(error)")
-                        .foregroundColor(.red)
-                        .padding()
-                } else {
-                    List(viewModel.climbs) { climb in
-                        VStack(alignment: .leading) {
-//                            Text(climb.name ?? "test")
-//                                .font(.headline)
-                            Text("Difficulty: \(climb.difficulty)")
-                                .font(.subheadline)
-                            Text("Date: \(climb.date)")
-                                .font(.subheadline)
-                        }
-                        .padding()
+        VStack {
+            if viewModel.isLoading {
+                ProgressView("Loading Climbs...")
+            } else if let error = viewModel.error {
+                Text("Error: \(error)")
+                    .foregroundColor(.red)
+            } else {
+                List(viewModel.climbs) { climb in
+                    VStack(alignment: .leading) {
+                        Text("Difficulty: \(climb.difficulty)")
+                        Text("Date: \(climb.date)")
                     }
-                    .listStyle(PlainListStyle())
                 }
             }
-            .navigationTitle("Climbs")
-            .onAppear {
-                viewModel.fetchClimbs(user:user)  // Fetch data when the view appears
+        }
+        .sheet(isPresented: $isAddingClimb) {
+            VStack {
+                Text("Add New Climb")
+                    .font(.title2)
+                    .padding()
+
+                TextField("Route ID", text: $routeId)
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+
+                TextField("Comment", text: $comment)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+
+                Button(action: {
+                    if let routeIdInt = Int(routeId) {
+                        viewModel.createClimb(sessionId: session.id, routeId: routeIdInt, comment: comment)
+                        isAddingClimb = false
+                        routeId = ""
+                        comment = ""
+                    }
+                }) {
+                    if viewModel.isCreating {
+                        ProgressView()
+                    } else {
+                        Text("Create Climb")
+                            .frame(maxWidth: .infinity)
+                    }
+                }
+                .disabled(viewModel.isCreating || routeId.isEmpty)
+                .buttonStyle(.bordered)
+                .padding()
             }
+            .padding()
+        }
+        .navigationTitle("Climbs")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    isAddingClimb.toggle()
+                }) {
+                    Image(systemName: "plus")
+                }
+            }
+        }
+        .onAppear {
+            viewModel.fetchClimbs(sessionId: session.id)
         }
     }
 }
 
 #Preview {
-    ClimbListView(user: User(id: "String", name: "String", email: "String", emailVerified: "String", picture: "String", updatedAt: "String"))
+    NavigationView {
+        ClimbListView(session: ClimbingSession(id: 1, date: "2025-02-13", location: 3, comment: "Fun day out!"))
+    }
 }

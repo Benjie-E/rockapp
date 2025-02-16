@@ -297,6 +297,8 @@
 /* Begin XCBuildConfiguration section */
 		B99703B42CE2D63900DE4C7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = B99703942CE2D63800DE4C7E /* rockapp */;
+			baseConfigurationReferenceRelativePath = Development.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -360,6 +362,8 @@
 		};
 		B99703B52CE2D63900DE4C7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = B99703942CE2D63800DE4C7E /* rockapp */;
+			baseConfigurationReferenceRelativePath = Development.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -416,6 +420,8 @@
 		};
 		B99703B72CE2D63900DE4C7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = B99703942CE2D63800DE4C7E /* rockapp */;
+			baseConfigurationReferenceRelativePath = Development.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -451,6 +457,8 @@
 		};
 		B99703B82CE2D63900DE4C7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = B99703942CE2D63800DE4C7E /* rockapp */;
+			baseConfigurationReferenceRelativePath = Development.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
