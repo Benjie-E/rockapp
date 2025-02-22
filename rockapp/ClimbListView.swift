@@ -22,16 +22,16 @@ class ClimbViewModel: ObservableObject {
             return
         }
 
-        guard let accessToken: String = getSavedCredentials()?.accessToken else {
-            error = "No access token"
-            return
-        }
-
-        let headers: HTTPHeaders = [.authorization(bearerToken: accessToken)]
+//        guard let accessToken: String = getSavedCredentials()?.accessToken else {
+//            error = "No access token"
+//            return
+//        }
+//
+//        let headers: HTTPHeaders = [.authorization(bearerToken: accessToken)]
 
         isLoading = true
 
-        AF.request(url, method: .get, headers: headers)
+        AF.request(url, method: .get)
             .validate()
             .responseDecodable(of: ClimbData.self) { response in
                 self.isLoading = false
@@ -52,15 +52,15 @@ class ClimbViewModel: ObservableObject {
             return
         }
 
-        guard let accessToken: String = getSavedCredentials()?.accessToken else {
-            error = "No access token"
-            return
-        }
-
-        let headers: HTTPHeaders = [
-            .authorization(bearerToken: accessToken),
-            .contentType("application/json")
-        ]
+//        guard let accessToken: String = getSavedCredentials()?.accessToken else {
+//            error = "No access token"
+//            return
+//        }
+//
+//        let headers: HTTPHeaders = [
+//            .authorization(bearerToken: accessToken),
+//            .contentType("application/json")
+//        ]
 
         let parameters: [String: Any] = [
             "session_id": sessionId,
@@ -70,7 +70,7 @@ class ClimbViewModel: ObservableObject {
 
         isCreating = true
 
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .validate()
             .response { response in
                 self.isCreating = false
