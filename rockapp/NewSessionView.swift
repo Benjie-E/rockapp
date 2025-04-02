@@ -4,6 +4,7 @@ import MapKit
 
 struct NewSessionView: View {
     let user: User
+    @Binding var selectedTab: String
     @State private var name: String = ""
     @State private var locations: [Location] = []
     @State private var selectedLocation: Location? = nil
@@ -11,6 +12,8 @@ struct NewSessionView: View {
     @State private var climbType: String = ""
     @State private var date: Date = Date()
     @State private var comments: String = ""
+    //@State private var sessionToShow: ClimbingSession? = nil
+    @EnvironmentObject var sessionToShow: ViewNewSession
     var body: some View {
         NavigationView {
             Form {
@@ -19,7 +22,7 @@ struct NewSessionView: View {
                     
                     NavigationLink(
                         destination: LocationPickerView(
-                            locations: locations,
+                            locations: $locations,
                             selectedLocation: $selectedLocation
                         )
                     ) {
@@ -38,17 +41,26 @@ struct NewSessionView: View {
                                     .foregroundColor(.gray)
                             }
                         }
+                        
                     }
+                    TextField("Comments", text:$comments)
+
                 }
-                TextField("Comments", text:$comments)
                 Button("Start Session") {
                     saveSession()
                 }
+                //if let session = sessionToShow {
+//                    NavigationLink(destination: ClimbListView(session: session), isActive: .constant(true)) {
+//                                        EmptyView()
+//                    }.hidden()
+//                        .disabled(true)
+                //                }
             }
             .navigationTitle("Start New Session")
             .onAppear {
                 fetchLocations()
             }
+            
         }
     }
     
@@ -77,7 +89,7 @@ struct NewSessionView: View {
         let locationId = selectedLocation?.id ?? 0 // Default to 0 if nil
         
         // Ensure comments is not nil (or provide a default value)
-        let commentText = comments ?? ""
+        let commentText = comments
         
         let parameters: [String: Any] = [
             "user_id": user.id,
@@ -91,12 +103,13 @@ struct NewSessionView: View {
         
         AF.request(apiUrl, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .validate()
-            .response { response in
+            .responseDecodable(of: SessionResponse.self) { response in
                 switch response.result {
-                case .success:
-                    print("Session created successfully: \(parameters)")
+                case .success(let data):
+                    print("Session created successfully: \(String(describing: data.session))")
                     resetFormFields()
-                    fetchClimbs()
+                    selectedTab = "session"
+                    sessionToShow.session = data.session
                 case .failure(let error):
                     print("Error saving session: \(error)")
                 }
@@ -106,7 +119,7 @@ struct NewSessionView: View {
     private func resetFormFields() {
         name = ""
         selectedLocation = nil
-        difficulty = ""
+        comments = ""
         climbType = ""
     }
     
@@ -116,10 +129,10 @@ struct NewSessionView: View {
 }
 
 struct LocationPickerView: View {
-    let locations: [Location]
+    @Binding var locations: [Location]
     @Binding var selectedLocation: Location?
     @State private var isShowingAddLocationView = false
-    
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         List(locations) { location in
             HStack {
@@ -135,6 +148,7 @@ struct LocationPickerView: View {
             .contentShape(Rectangle()) // Makes the whole row tappable
             .onTapGesture {
                 selectedLocation = location
+                presentationMode.wrappedValue.dismiss()
             }
         }
         .navigationTitle("Select Location")
@@ -150,51 +164,16 @@ struct LocationPickerView: View {
         .sheet(isPresented: $isShowingAddLocationView) {
             AddLocationView { newLocation in
                 // Add the new location and select it
+                locations.append(newLocation)
                 selectedLocation = newLocation
             }
         }
     }
 }
 
-struct AddLocationView: View {
-    @Environment(\.dismiss) var dismiss
-    
-    @State private var name: String = ""
-    @State private var address: String = ""
-    @State private var description: String = ""
-    
-    var onSave: (Location) -> Void
-    
-    var body: some View {
-        NavigationView {
-            Form {
-                TextField("Name", text: $name)
-                TextField("Address", text: $address)
-                TextField("Description", text: $description)
-            }
-            .navigationTitle("Add Location")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") {
-                        let newLocation = Location(
-                            id: Int.random(in: 1000...9999), // Simulated ID
-                            name: name,
-                            address: address,
-                            description: description
-                        )
-                        onSave(newLocation)
-                        dismiss()
-                    }
-                    .disabled(name.isEmpty || address.isEmpty)
-                }
-            }
-        }
-    }
+struct SessionResponse: Decodable{
+    let message: String
+    let session: ClimbingSession
 }
 
 struct Location: Codable, Identifiable, Equatable, Hashable {

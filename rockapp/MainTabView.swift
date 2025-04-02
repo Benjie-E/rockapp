@@ -9,26 +9,39 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @StateObject var sessionToShow = ViewNewSession()
+    @State private var selectedTab = "session"
     let user: User
     var body: some View {
-        TabView {
+        TabView (selection: $selectedTab){
             // NewClimbView(user: user)
             
             
             SessionListView(user: user)
                 .tabItem {
-                    Label("Sessions", systemImage: "2.circle")
+                    Label("Sessions", systemImage: "list.bullet.clipboard")
                 }
-            
-            NewSessionView(user: user)
+                .tag("session")
+                .environmentObject(sessionToShow)
+            FeedView(user: user)
+                .tabItem {
+                    Label("Feed", systemImage: "paperplane.fill")
+                }
+                .tag("feed")
+                .environmentObject(sessionToShow)
+            NewSessionView(user: user, selectedTab: $selectedTab)
                 .tabItem {
                     Label("New Session", systemImage: "plus")
                 }
+                .tag("new")
+                .environmentObject(sessionToShow)
+
             
             ProfileView(user: user)
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }
+                .tag("profile")
         }
     }
 }
