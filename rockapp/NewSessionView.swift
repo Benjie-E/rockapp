@@ -3,13 +3,13 @@ import Alamofire
 import MapKit
 
 struct NewSessionView: View {
-    let user: User
+    //let user: User
     @Binding var selectedTab: String
-    @State private var name: String = ""
+    //@State private var name: String = ""
     @State private var locations: [Location] = []
     @State private var selectedLocation: Location? = nil
-    @State private var difficulty: String = ""
-    @State private var climbType: String = ""
+    //@State private var difficulty: String = ""
+    //@State private var climbType: String = ""
     @State private var date: Date = Date()
     @State private var comments: String = ""
     //@State private var sessionToShow: ClimbingSession? = nil
@@ -18,7 +18,7 @@ struct NewSessionView: View {
         NavigationView {
             Form {
                 Section(header: Text("Climb Details")) {
-                    TextField("Climb Name", text: $name)
+                    //TextField("Climb Name", text: $name)
                     
                     NavigationLink(
                         destination: LocationPickerView(
@@ -66,8 +66,10 @@ struct NewSessionView: View {
     
     private func fetchLocations() {
         let apiUrl = AppEnvironment.baseURL + "locations"
-        
-        AF.request(apiUrl)
+        let headers: HTTPHeaders = [
+            .authorization(bearerToken: AuthViewModel.shared.idToken)]
+        print(headers)
+        AF.request(apiUrl, method: .get, headers: headers)
             .validate()
             .responseDecodable(of: [Location].self) { response in
                 switch response.result {
@@ -92,7 +94,7 @@ struct NewSessionView: View {
         let commentText = comments
         
         let parameters: [String: Any] = [
-            "user_id": user.id,
+            "user_id": AuthViewModel.shared.user?.id,
             "date": formattedDate,
             "location": locationId,
             "comment": commentText,
@@ -117,10 +119,10 @@ struct NewSessionView: View {
     }
     
     private func resetFormFields() {
-        name = ""
+//        name = ""
         selectedLocation = nil
         comments = ""
-        climbType = ""
+        //climbType = ""
     }
     
     private func fetchClimbs() {

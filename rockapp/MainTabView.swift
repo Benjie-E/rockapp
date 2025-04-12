@@ -11,25 +11,25 @@ import SwiftUI
 struct MainTabView: View {
     @StateObject var sessionToShow = ViewNewSession()
     @State private var selectedTab = "session"
-    let user: User
+    //let user: User
     var body: some View {
         TabView (selection: $selectedTab){
             // NewClimbView(user: user)
             
             
-            SessionListView(user: user)
+            SessionListView(selectedTab: $selectedTab)
                 .tabItem {
                     Label("Sessions", systemImage: "list.bullet.clipboard")
                 }
                 .tag("session")
                 .environmentObject(sessionToShow)
-            FeedView(user: user)
+            FeedView()
                 .tabItem {
                     Label("Feed", systemImage: "paperplane.fill")
                 }
                 .tag("feed")
                 .environmentObject(sessionToShow)
-            NewSessionView(user: user, selectedTab: $selectedTab)
+            NewSessionView(selectedTab: $selectedTab)
                 .tabItem {
                     Label("New Session", systemImage: "plus")
                 }
@@ -37,7 +37,7 @@ struct MainTabView: View {
                 .environmentObject(sessionToShow)
 
             
-            ProfileView(user: user)
+            ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }

@@ -11,7 +11,7 @@ import JWTDecode
 import SwiftUI
 
 struct ProfileView: View {
-    let user: User
+    let user: User = AuthViewModel.shared.user!
     var body: some View {
 
         List {
@@ -20,12 +20,11 @@ struct ProfileView: View {
                     picture: user.picture)
             ) {
                 //ProfileCell(key: "ID", value: user.id)
-                //ProfileCell(key: "Username", value: user.username)
+                ProfileCell(key: "Username", value: user.username)
                 ProfileCell(key: "Name", value: user.name)
                 ProfileCell(key: "Email", value: user.email)
-                ProfileCell(
-                    key: "Email verified?", value: user.emailVerified)
-                ProfileCell(key: "Updated at", value: user.updatedAt)
+                //ProfileCell(key: "Email verified?", value: user.emailVerified)
+                //ProfileCell(key: "Updated at", value: user.updatedAt)
             }
             //            Button(action: postStuff)
             //            {
@@ -45,7 +44,7 @@ struct ProfileView: View {
 struct User {
     let id: String
     let name: String
-    //let username: String?
+    let username: String
     let email: String
     let emailVerified: String
     let picture: String
@@ -57,7 +56,7 @@ extension User {
         guard let jwt = try? decode(jwt: idToken),
             let id = jwt.subject,
             let name = jwt["name"].string,
-            //let username = jwt["username"].string,
+            let username = jwt["username"].string,
             let email = jwt["email"].string,
             let emailVerified = jwt["email_verified"].boolean,
             let picture = jwt["picture"].string,
@@ -67,11 +66,12 @@ extension User {
         }
         self.id = id
         self.name = name
-        //self.username = username
+        self.username = username
         self.email = email
         self.emailVerified = String(describing: emailVerified)
         self.picture = picture
         self.updatedAt = updatedAt
+//        print(idToken)
     }
 }
 
@@ -98,7 +98,6 @@ struct ProfileCell: View {
 
 struct ProfileHeader: View {
     @State var picture: String
-    @EnvironmentObject var authViewModel: AuthViewModel
 
     private let size: CGFloat = 100
 
@@ -124,10 +123,10 @@ struct ProfileHeader: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    authViewModel.logout()
+                    AuthViewModel.shared.logout()
                 }) {
-                    Text("Logout")
-                        .font(.title)
+                    Text("LOG OUT")
+                        .font(.body)
                         .padding()
                         .foregroundColor(.white)
                         .background(Color.red)
@@ -186,3 +185,10 @@ struct ProfileHeader: View {
 struct UserStuff: Codable {
     var id: String
 }
+
+//struct ProfileViewPreviews: PreviewProvider {
+//    static var previews: some View {
+//////        ProfileView(user: User(id: "auth0|67be1d83d7397dc4f217c8bf", name: "John Doe", username: "t",  email: "john@example.com", emailVerified: "true", picture: "", updatedAt: "2025-02-13")).environmentObject(ViewNewSession())
+//        ProfileView()
+//    }
+//}

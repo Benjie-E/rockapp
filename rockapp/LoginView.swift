@@ -3,19 +3,17 @@ import AuthenticationServices
 import Auth0
 
 struct LoginView: View {
-    @EnvironmentObject var authViewModel: AuthViewModel  // Global authentication state
-
     var body: some View {
         NavigationStack {
-            if authViewModel.isAuthenticated, let user = authViewModel.user {
-                MainTabView(user: user)
+            if AuthViewModel.shared.isAuthenticated/*, let user = authViewModel.user */{
+                MainTabView()
             } else {
                 VStack {
                     Text("CLIMB")
                         .font(.largeTitle)
                         .padding()
 
-                    Button(action: authViewModel.login) {  // Call shared login function
+                    Button(action: AuthViewModel.shared.login) {  // Call shared login function
                         Text("Login")
                             .font(.title)
                             .padding()
@@ -24,7 +22,7 @@ struct LoginView: View {
                             .cornerRadius(10)
                     }
                     .padding()
-                    Button(action: authViewModel.signup) {  // Call shared login function
+                    Button(action: AuthViewModel.shared.signup) {  // Call shared login function
                         Text("Sign Up")
                             .font(.title)
                             .padding()
@@ -48,15 +46,15 @@ struct LoginView: View {
 //
 //                    Spacer()
                 }
-                .navigationTitle("Login")
+//                .navigationTitle("Login")
             }
         }
         .onAppear {
-            authViewModel.loadUser()  // Ensure credentials are checked on app launch
+            AuthViewModel.shared.loadUser()  // Ensure credentials are checked on app launch
         }
     }
 }
 
 #Preview {
-    LoginView().environmentObject(AuthViewModel())
+    LoginView()
 }

@@ -7,16 +7,14 @@
 import SwiftUI
 @main
 struct rockappApp: App {
-    @StateObject var authViewModel = AuthViewModel()
+    @StateObject var authViewModel = AuthViewModel.shared
 
     var body: some Scene {
         WindowGroup {
             if authViewModel.isAuthenticated {
-                MainTabView(user: authViewModel.user!)
-                    .environmentObject(authViewModel)
+                MainTabView()
             } else {
                 LoginView()
-                    .environmentObject(authViewModel)
             }
         }
     }
